@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border-color;
+  }
+  html {
+    @apply bg-app-bg text-primary-text;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+  body {
+    @apply antialiased;
+    background-color: #080c10;
+    background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+    min-height: 100vh;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0e1318;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f2d3d;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3f57;
+  }
+}
+
+@layer components {
+  /* Cards */
+  .tp-card {
+    @apply bg-card-bg border border-border-color rounded-xl p-4;
+  }
+  .tp-card-hover {
+    @apply tp-card hover:bg-card-hover hover:border-border-bright transition-all duration-200 cursor-pointer;
+  }
+
+  /* Buttons */
+  .tp-btn-primary {
+    @apply bg-accent text-white px-4 py-2 rounded-lg font-medium text-sm
+           hover:bg-accent/90 active:scale-95 transition-all duration-150;
+  }
+  .tp-btn-secondary {
+    @apply bg-card-bg border border-border-color text-primary-text px-4 py-2 rounded-lg
+           font-medium text-sm hover:bg-card-hover hover:border-border-bright
+           active:scale-95 transition-all duration-150;
+  }
+  .tp-btn-danger {
+    @apply bg-trading-red/10 border border-trading-red/30 text-trading-red px-4 py-2
+           rounded-lg font-medium text-sm hover:bg-trading-red/20
+           active:scale-95 transition-all duration-150;
+  }
+  .tp-btn-green {
+    @apply bg-trading-green/10 border border-trading-green/30 text-trading-green px-4 py-2
+           rounded-lg font-medium text-sm hover:bg-trading-green/20
+           active:scale-95 transition-all duration-150;
+  }
+
+  /* Inputs */
+  .tp-input {
+    @apply bg-panel-bg border border-border-color rounded-lg px-3 py-2 text-sm
+           text-primary-text placeholder-muted-text w-full
+           focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
+           transition-all duration-150;
+  }
+  .tp-select {
+    @apply tp-input cursor-pointer;
+  }
+
+  /* Badges */
+  .tp-badge-green {
+    @apply inline-flex items-center gap-1 bg-trading-green/10 text-trading-green
+           border border-trading-green/20 text-xs px-2 py-0.5 rounded-full font-medium;
+  }
+  .tp-badge-red {
+    @apply inline-flex items-center gap-1 bg-trading-red/10 text-trading-red
+           border border-trading-red/20 text-xs px-2 py-0.5 rounded-full font-medium;
+  }
+  .tp-badge-blue {
+    @apply inline-flex items-center gap-1 bg-trading-blue/10 text-trading-blue
+           border border-trading-blue/20 text-xs px-2 py-0.5 rounded-full font-medium;
+  }
+  .tp-badge-yellow {
+    @apply inline-flex items-center gap-1 bg-trading-yellow/10 text-trading-yellow
+           border border-trading-yellow/20 text-xs px-2 py-0.5 rounded-full font-medium;
+  }
+  .tp-badge-dim {
+    @apply inline-flex items-center gap-1 bg-panel-bg text-muted-text
+           border border-border-color text-xs px-2 py-0.5 rounded-full;
+  }
+
+  /* Number styles */
+  .num {
+    @apply font-mono;
+  }
+  .num-green {
+    @apply font-mono text-trading-green;
+  }
+  .num-red {
+    @apply font-mono text-trading-red;
+  }
+
+  /* Section header */
+  .section-title {
+    @apply text-xs font-semibold uppercase tracking-widest text-muted-text mb-3;
+  }
+}
+
+/* Recharts overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #1f2d3d !important;
+  stroke-opacity: 1 !important;
+}
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #141b22 !important;
+  border: 1px solid #1f2d3d !important;
+  border-radius: 8px !important;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 6px;
+  border-radius: 99px;
+  background: #1f2d3d;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+/* Ticker animation */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-content {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+}
